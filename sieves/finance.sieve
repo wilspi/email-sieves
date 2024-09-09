@@ -21,7 +21,7 @@ if address :matches "From" ["alerts@axisbank.com", "cards@icicibank.com", "cc.st
     else
     {
         fileinto "transactions/fin/cc-alerts";
-        expire "day" "300";
+        expire "day" "100";
     }
 }
 
