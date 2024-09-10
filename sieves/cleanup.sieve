@@ -3,11 +3,13 @@ require ["fileinto", "imap4flags"];
 require "vnd.proton.expire";
 
 # Generated: Do not run this script on spam messages
-if allof (environment :matches "vnd.proton.spam-threshold" "*", spamtest :value "ge" :comparator "i;ascii-numeric" "${1}") {
+if allof (
+    environment :matches "vnd.proton.spam-threshold" "*", spamtest :value "ge" :comparator "i;ascii-numeric" "${1}"
+) {
     return;
 }
 
-if address :matches "From" ["no-reply@accounts.google.com", "auth@mailer.zerodha.net"] {
+if address :matches "From" ["no-reply@accounts.google.com", "auth@mailer.zerodha.net", "updates-noreply@linkedin.com"] {
     fileinto "trash";
 }
 
